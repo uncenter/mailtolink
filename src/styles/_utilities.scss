@@ -1,9 +1,6 @@
-
 // Converted Variables
 
-
 // Custom Media Query Variables
-
 
 /*
 
@@ -18,40 +15,56 @@
 
 /* Equivalent to .overflow-y-scroll */
 .overflow-container {
-  overflow-y: scroll;
+	overflow-y: scroll;
 }
 
 .center {
-  margin-right: auto;
-  margin-left: auto;
+	margin-right: auto;
+	margin-left: auto;
 }
 
-.mr-auto { margin-right: auto; }
-.ml-auto { margin-left:  auto; }
-
-@media #{$breakpoint-not-small}{
-  .center-ns {
-    margin-right: auto;
-    margin-left: auto;
-  }
-  .mr-auto-ns { margin-right: auto; }
-  .ml-auto-ns { margin-left:  auto; }
+.mr-auto {
+	margin-right: auto;
+}
+.ml-auto {
+	margin-left: auto;
 }
 
-@media #{$breakpoint-medium}{
-  .center-m {
-    margin-right: auto;
-    margin-left: auto;
-  }
-  .mr-auto-m { margin-right: auto; }
-  .ml-auto-m { margin-left:  auto; }
+@media #{$breakpoint-not-small} {
+	.center-ns {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.mr-auto-ns {
+		margin-right: auto;
+	}
+	.ml-auto-ns {
+		margin-left: auto;
+	}
 }
 
-@media #{$breakpoint-large}{
-  .center-l {
-    margin-right: auto;
-    margin-left: auto;
-  }
-  .mr-auto-l { margin-right: auto; }
-  .ml-auto-l { margin-left:  auto; }
+@media #{$breakpoint-medium} {
+	.center-m {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.mr-auto-m {
+		margin-right: auto;
+	}
+	.ml-auto-m {
+		margin-left: auto;
+	}
+}
+
+@media #{$breakpoint-large} {
+	.center-l {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.mr-auto-l {
+		margin-right: auto;
+	}
+	.ml-auto-l {
+		margin-left: auto;
+	}
 }

@@ -24,40 +24,40 @@ Technology Preview 68.
 *******************************************************************************/
 
 // New prefers-color-scheme media query to detect OS light/dark mode setting
-var prefers_light = window.matchMedia('(prefers-color-scheme: light)')
-var prefers_dark = window.matchMedia('(prefers-color-scheme: dark)')
-var btn = document.getElementById("nav-light");
+var prefers_light = window.matchMedia('(prefers-color-scheme: light)');
+var prefers_dark = window.matchMedia('(prefers-color-scheme: dark)');
+var btn = document.getElementById('nav-light');
 
 // Change to dark and rotate the switch icon
 function darkmode() {
-  document.body.classList.replace('light', 'dark');
+	document.body.classList.replace('light', 'dark');
 }
 
 // Change to light and rotate the switch icon
 function lightmode() {
-  document.body.classList.replace('dark', 'light');
+	document.body.classList.replace('dark', 'light');
 }
 
 // Initialization triggers light/dark mode based on prior preference, then OS setting
-if(localStorage.getItem("mode")=="dark") {
-  darkmode();
-} else if(localStorage.getItem("mode")=="light") {
-  lightmode();
-} else if(prefers_light.matches) {
-  lightmode();
-} else if(prefers_dark.matches) {
-  darkmode();
+if (localStorage.getItem('mode') == 'dark') {
+	darkmode();
+} else if (localStorage.getItem('mode') == 'light') {
+	lightmode();
+} else if (prefers_light.matches) {
+	lightmode();
+} else if (prefers_dark.matches) {
+	darkmode();
 }
 
 // Fires when user clicks light/dark mode switch in top right
 function handleThemeUpdate() {
-  if (document.body.classList.contains('light')) {
-    darkmode();
-    localStorage.setItem("mode", "dark");
-  } else {
-    lightmode();
-    localStorage.setItem("mode", "light");
-  }
+	if (document.body.classList.contains('light')) {
+		darkmode();
+		localStorage.setItem('mode', 'dark');
+	} else {
+		lightmode();
+		localStorage.setItem('mode', 'light');
+	}
 }
 
 btn.addEventListener('click', handleThemeUpdate);
@@ -65,15 +65,15 @@ btn.addEventListener('click', handleThemeUpdate);
 // Runs when OS changes light/dark mode. Changes only if you were on default
 // color state (light on light mode, dark on dark mode).
 function OSColorChange() {
-  if (prefers_light.matches) {
-    lightmode();
-    localStorage.setItem("mode", "light");
-  } else if (prefers_dark.matches) {
-    darkmode();
-    localStorage.setItem("mode", "dark");
-  }
+	if (prefers_light.matches) {
+		lightmode();
+		localStorage.setItem('mode', 'light');
+	} else if (prefers_dark.matches) {
+		darkmode();
+		localStorage.setItem('mode', 'dark');
+	}
 }
 
 // Listeners for when you change OS setting for light/dark mode
-prefers_light.addListener(OSColorChange)
-prefers_dark.addListener(OSColorChange)
+prefers_light.addListener(OSColorChange);
+prefers_dark.addListener(OSColorChange);

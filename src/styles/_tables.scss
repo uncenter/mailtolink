@@ -1,9 +1,6 @@
-
 // Converted Variables
 
-
 // Custom Media Query Variables
-
 
 /*
 
@@ -13,30 +10,30 @@
 */
 
 .collapse {
-    border-collapse: collapse;
-    border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 .striped--light-silver:nth-child(odd) {
-  background-color: $light-silver;
+	background-color: $light-silver;
 }
 
 .striped--moon-gray:nth-child(odd) {
-  background-color: $moon-gray;
+	background-color: $moon-gray;
 }
 
 .striped--light-gray:nth-child(odd) {
-  background-color: $light-gray;
+	background-color: $light-gray;
 }
 
 .striped--near-white:nth-child(odd) {
-  background-color: $near-white;
+	background-color: $near-white;
 }
 
 .stripe-light:nth-child(odd) {
-  background-color: $white-10;
+	background-color: $white-10;
 }
 
 .stripe-dark:nth-child(odd) {
-  background-color: $black-10;
+	background-color: $black-10;
 }
