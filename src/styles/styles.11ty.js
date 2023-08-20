@@ -15,7 +15,7 @@ class Page {
 		let plugins = [
 			require('autoprefixer'),
 			require('@fullhuman/postcss-purgecss')({
-				content: ['./src/_includes/layouts/base.njk'],
+				content: ['./src/index.njk'],
 				whitelist: ['dark', 'active'],
 			}),
 			require('cssnano'),
