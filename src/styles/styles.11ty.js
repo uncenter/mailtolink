@@ -10,17 +10,21 @@ class Page {
 	}
 
 	async render() {
-		let source = `${__dirname}/index.scss`;
-		let content = sass.compile(source).css.toString();
-		source = `${__dirname}/index.css`;
+		const content = sass.compile(`${__dirname}/index.scss`).css.toString();
 
-		let plugins = [require('autoprefixer'), require('cssnano')];
+		let plugins = [
+			require('autoprefixer'),
+			require('@fullhuman/postcss-purgecss')({
+				content: ['./src/_includes/layouts/base.njk'],
+				whitelist: ['dark', 'active'],
+			}),
+			require('cssnano'),
+		];
 
 		const css = await postcss(plugins).process(content, {
-			from: source,
-			to: source,
+			from: `${__dirname}/index.css`,
+			to: `${__dirname}/index.css`,
 		});
-
 		return css.content;
 	}
 }
