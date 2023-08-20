@@ -3,31 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ renderData.description or description or metadata.description }}">
-  <title>{{ renderData.title or title or metadata.title }}</title>
+  <meta name="description" content="{{ meta.description }}">
+  <title>{{ meta.title }}</title>
 
-  <meta name="theme-color" content="{{ theme_color }}">
-  <meta name="msapplication-navbutton-color" content="{{ theme_color }}">
-  <meta name="apple-mobile-web-app-status-bar-style" content="{{ theme_color }}">
+  <meta name="theme-color" content="{{ meta.theme_color }}">
+  <meta name="msapplication-navbutton-color" content="{{ meta.theme_color }}">
+  <meta name="apple-mobile-web-app-status-bar-style" content="{{ meta.theme_color }}">
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:site" content="@{{ twitter_username }}" />
-  <meta property="og:title" content="{{ title }}" />
-  <meta property="og:description" content="{{ description }}" />
-  <meta property="og:image" content="{{ url }}/images/{{ logo }}" />
-  <meta name="google-site-verification" content="Jff4_DD2kU7Y8I7ITykHV_aXZKwATMqPTswzMZzZLTM" />
+  <meta property="twitter:site" content="@{{ meta.twitter_username }}" />
+  <meta property="og:title" content="{{ meta.title }}" />
+  <meta property="og:description" content="{{ meta.description }}" />
+  <meta property="og:image" content="{{ url }}/assets/{{ meta.logo }}" />
 
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,600" rel="stylesheet">
   <link rel="stylesheet" href="/styles/index.css">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-  <link rel="manifest" href="/images/site.webmanifest">
-  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
 </head>
 <body class="bg-tile light" id="top">
   <main class="h-100 flex main flex-column">
   <div class="flex pa3 flex-row justify-between align-items-center w-100">
+  <div class="d-block w-100">
+    <iframe
+        src="https://ghbtns.com/github-btn.html?user=mckeever02&repo=mailtolink&type=star&count=true&size=large"
+        frameborder="0"
+        scrolling="0"
+        width="170"
+        height="30"
+        title="GitHub"
+    ></iframe>
+  </div>
   <div class="d-flex flex-row justify-center w-100 tc">
     <a class="link f6" href="https://twitter.com/mmckvr">@mmckvr</a>
     <span class="mh-3 seperator">&middot;</span>

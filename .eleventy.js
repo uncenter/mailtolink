@@ -1,10 +1,9 @@
 module.exports = function (eleventyConfig) {
-	eleventyConfig.addPassthroughCopy('src/images');
+	eleventyConfig.addPassthroughCopy('src/assets');
+	eleventyConfig.addPassthroughCopy('src/scripts');
 
 	return {
 		dir: { input: 'src', output: 'dist', data: '_data' },
-		passthroughFileCopy: true,
-		templateFormats: ['njk', 'md', 'css', 'html', 'yml'],
-		htmlTemplateEngine: 'njk',
+		templateFormats: ['njk', '11ty.js'],
 	};
 };
