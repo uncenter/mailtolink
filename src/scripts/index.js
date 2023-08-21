@@ -22,7 +22,7 @@ if (localStorage.getItem('theme') === 'dark') {
 	lightMode();
 }
 
-document.getElementById('nav-light').addEventListener('click', () => {
+document.querySelector('#lightswitch').addEventListener('click', () => {
 	if (document.body.classList.contains('light')) {
 		darkMode();
 		localStorage.setItem('theme', 'dark');
@@ -48,68 +48,119 @@ window
 
 // ---
 
-const ccSection = document.querySelector('.ccSection'),
-	bccSection = document.querySelector('.bccSection'),
-	ccBtn = document.querySelector('.ccButton'),
-	bccBtn = document.querySelector('.bccButton'),
-	input = document.querySelectorAll('.input'),
-	copyCode = document.querySelector('.copyCode');
+class Params {
+	constructor() {
+		this.params = new Map();
+	}
 
-for (const item of input) {
-	item.addEventListener('keyup', (e) => {
-		const value = e.target.value;
-		const id = e.target.id;
-		const output = document.querySelector(`.${id}Output`);
-		const link = document.querySelector('.mailto-link-container');
-		const label = document.getElementById(`${id}Label`);
+	get(key) {
+		const values = this.params.get(key);
+		return values ? values[0] : null;
+	}
 
-		output.innerText = value;
+	set(key, value) {
+		this.params.set(key, [value]);
+	}
 
-		// If not recipient input then show adjoining label when value over 1 else hide
-		if (id !== 'recipient') {
-			if (value.length >= 1) {
-				label.classList.add('dib');
-			} else {
-				label.classList.remove('dib');
+	delete(key) {
+		this.params.delete(key);
+	}
+
+	toString() {
+		const parts = [];
+		for (const [key, values] of this.params) {
+			for (const value of values) {
+				parts.push(`${key}=${value}`);
 			}
 		}
+		if (parts.length > 0) {
+			return '?' + parts.join('&');
+		} else {
+			return '';
+		}
+	}
+}
 
-		if (id === 'recipient' || id === 'cc' || id === 'bcc') {
-			link.classList.add('active');
+// ---
 
-			// If email field and comma, then remove space after it in output
+const recipientInput = document.querySelector('input#recipient');
+const ccInput = document.querySelector('input#cc');
+const bccInput = document.querySelector('input#bcc');
+const subjectInput = document.querySelector('input#subject');
+const bodyInput = document.querySelector('textarea#body');
+
+const mailToText = document.querySelector('.mailto-text');
+const mailToContainer = document.querySelector('.mailto-link-container');
+
+function updateResult() {
+	const params = new Params();
+
+	for (const { name, element } of [
+		{ name: 'cc', element: ccInput },
+		{ name: 'bcc', element: bccInput },
+		{ name: 'subject', element: subjectInput },
+		{ name: 'body', element: bodyInput },
+	]) {
+		let value = (element?.value || '').trim();
+
+		// Replace spaces and line breaks in subject/body inputs
+		if (['subject', 'body'].includes(name)) {
+			value = encodeURIComponent(value).replace(/%0A/g, '%0D%0A');
+		}
+
+		// If email field and comma, then remove space after it
+		if (['recipient', 'cc', 'bcc'].includes(name)) {
 			if (/,/.test(value)) {
-				output.innerHTML = output.innerHTML.replace(/\s+/g, '');
-			} else {
-				output.innerHTML = value;
+				value = value.replace(/\s+/g, '');
 			}
 		}
 
-		// Show email address when email field has 3 chars or more, hide if not.
-		if (id === 'recipient') {
-			if (value.length >= 3) {
-				link.classList.add('active');
-			} else {
-				link.classList.remove('active');
-			}
-		}
+		if (value !== '') params.set(name, value);
+	}
 
-		// If subject or body, replace spaces and line breaks
-		if (id === 'subject' || id === 'body') {
-			let str = output.innerText;
-			let strBreak = '%0A';
-			let newStr = encodeURIComponent(str).replace(/%0A/g, '%0D%0A');
-			// str = str.replace(/\n/g, '%0d%0a')
-			// str = str.replace(/\n/g, "%0A").replace(/ /g, "%20").replace(/&/g, "%26");
-			output.innerText = newStr;
-		}
+	mailToText.textContent = `mailto:${
+		(recipientInput?.value || '').trim() + params.toString()
+	}`;
+}
+
+function updateMailToContainer() {
+	const addressEls = [recipientInput, ccInput, bccInput];
+	if (
+		addressEls.some((e) => !e.checkValidity()) ||
+		addressEls.every((e) => e.value === '')
+	) {
+		mailToContainer.classList.remove('active');
+		return;
+	}
+
+	updateResult();
+	mailToContainer.classList.add('active');
+}
+
+updateMailToContainer();
+
+for (const input of [
+	recipientInput,
+	ccInput,
+	bccInput,
+	subjectInput,
+	bodyInput,
+]) {
+	input.addEventListener('input', (e) => {
+		updateMailToContainer();
 	});
 }
+
+const ccBtn = document.querySelector('#cc-button');
+const bccBtn = document.querySelector('#bcc-button');
+
+const ccSection = document.querySelector('.ccSection');
+const bccSection = document.querySelector('.bccSection');
 
 ccBtn.addEventListener('click', function (e) {
 	if (ccSection.classList.contains('dn')) {
 		ccSection.classList.remove('dn');
-		document.getElementById('cc').focus();
+		document.querySelector('#cc').focus();
 	} else {
 		ccSection.classList.add('dn');
 	}
@@ -118,34 +169,15 @@ ccBtn.addEventListener('click', function (e) {
 bccBtn.addEventListener('click', function (e) {
 	if (bccSection.classList.contains('dn')) {
 		bccSection.classList.remove('dn');
-		document.getElementById('bcc').focus();
+		document.querySelector('#bcc').focus();
 	} else {
 		bccSection.classList.add('dn');
 	}
 });
 
+const copyCode = document.querySelector('.copyCode');
+
 copyCode.addEventListener('click', function (e) {
-	const labelVisible = document.querySelectorAll('.label.dib'),
-		labelFirst = labelVisible[0],
-		label = document.querySelector('.label.dib'),
-		labelCount = labelVisible.length;
-
-	for (let item of labelVisible) {
-		if (item.innerHTML.indexOf('&') === -1) {
-			item.prepend('&');
-		}
-	}
-
-	if (labelFirst) {
-		let str = labelFirst.innerHTML;
-		str = str.replace('&amp;', '');
-		labelFirst.innerHTML = str;
-
-		if (labelFirst.innerHTML.indexOf('?') === -1) {
-			labelFirst.prepend('?');
-		}
-	}
-
 	window.navigator.clipboard.writeText(
 		copyCode.previousElementSibling.textContent,
 	);
@@ -155,12 +187,6 @@ copyCode.addEventListener('click', function (e) {
 	setTimeout(() => {
 		copyCode.textContent = 'Copy';
 	}, 1500);
-
-	// let mailtoText = document.querySelector('.mailto-text').innerText.replace("%0A", "%0D%0A");
-
-	// mailtoText = mailtoText.replace("%0A", "%0D%0A");
-
-	// console.log(`Spaces gone?:: ${mailtoText}`);
 });
 
 copyCode.addEventListener('mouseover', function (e) {
