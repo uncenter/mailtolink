@@ -3,23 +3,22 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="{{ meta.description }}" />
-		<title>{{ meta.title }}</title>
+		<meta name="description" content="{{ site.description }}" />
+		<title>{{ site.title }}</title>
 
-		<meta name="theme-color" content="{{ meta.theme_color }}" />
+		<meta name="theme-color" content="{{ site.theme_color }}" />
 		<meta
 			name="msapplication-navbutton-color"
-			content="{{ meta.theme_color }}"
+			content="{{ site.theme_color }}"
 		/>
 		<meta
 			name="apple-mobile-web-app-status-bar-style"
-			content="{{ meta.theme_color }}"
+			content="{{ site.theme_color }}"
 		/>
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="twitter:site" content="@{{ meta.twitter_username }}" />
-		<meta property="og:title" content="{{ meta.title }}" />
-		<meta property="og:description" content="{{ meta.description }}" />
-		<meta property="og:image" content="{{ url }}/assets/{{ meta.logo }}" />
+		<meta property="og:title" content="{{ site.title }}" />
+		<meta property="og:description" content="{{ site.description }}" />
+		<meta property="og:image" content="{{ url }}/assets/{{ site.logo }}" />
 
 		<style>
 			/* ibm-plex-mono-regular - latin */
@@ -108,7 +107,7 @@
 						<div class="app-circle dib"></div>
 						<div class="app-circle dib"></div>
 					</div>
-					<h1 class="f6 f5-ns ma0 fw6">mailtolink.me</h1>
+					<h1 class="f6 f5-ns ma0 fw6">{{ site.domain }}</h1>
 				</div>
 				<div class="bb email-compose">
 					<div class="flex flex-row relative items-center justify-center">
