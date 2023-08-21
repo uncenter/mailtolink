@@ -124,10 +124,10 @@ function updateResult() {
 }
 
 function updateMailToContainer() {
-	const addressEls = [recipientInput, ccInput, bccInput];
 	if (
-		addressEls.some((e) => !e.checkValidity()) ||
-		addressEls.every((e) => e.value === '')
+		[recipientInput, ccInput, bccInput].filter(
+			(e) => e.checkValidity() && e.value !== '',
+		).length === 0
 	) {
 		mailToContainer.classList.remove('active');
 		return;
@@ -174,6 +174,8 @@ bccBtn.addEventListener('click', function (e) {
 		bccSection.classList.add('dn');
 	}
 });
+
+// ---
 
 const copyCode = document.querySelector('.copyCode');
 
