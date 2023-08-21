@@ -21,10 +21,34 @@
 		<meta property="og:description" content="{{ meta.description }}" />
 		<meta property="og:image" content="{{ url }}/assets/{{ meta.logo }}" />
 
-		<link
-			href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,600"
-			rel="stylesheet"
-		/>
+		<style>
+			/* ibm-plex-mono-regular - latin */
+			@font-face {
+				font-display: swap;
+				font-family: 'IBM Plex Mono';
+				font-style: normal;
+				font-weight: 400;
+				src: url('/fonts/ibm-plex-mono-v19-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+			}
+
+			/* ibm-plex-mono-600 - latin */
+			@font-face {
+				font-display: swap;
+				font-family: 'IBM Plex Mono';
+				font-style: normal;
+				font-weight: 600;
+				src: url('/fonts/ibm-plex-mono-v19-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+			}
+
+			/* ibm-plex-mono-700 - latin */
+			@font-face {
+				font-display: swap;
+				font-family: 'IBM Plex Mono';
+				font-style: normal;
+				font-weight: 700;
+				src: url('/fonts/ibm-plex-mono-v19-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+			}
+		</style>
 		<link rel="stylesheet" href="/styles/index.css" />
 
 		<link
@@ -128,7 +152,7 @@
 					</div>
 					<div class="dn ccSection">
 						<div class="flex flex-row relative items-center justify-center">
-							<label for="cc" class="f5-ns f7 fw7 code gray-40 pl2 pl3-ns"
+							<label for="cc" class="f5-ns f7 fw7 gray-40 pl2 pl3-ns"
 								>Cc:</label
 							>
 							<input
@@ -142,7 +166,7 @@
 					</div>
 					<div class="dn bccSection">
 						<div class="flex flex-row relative items-center justify-center">
-							<label for="bcc" class="f5-ns f6 fw7 code gray-40 pl2 pl3-ns"
+							<label for="bcc" class="f5-ns f6 fw7 gray-40 pl2 pl3-ns"
 								>Bcc:</label
 							>
 							<input
@@ -157,7 +181,7 @@
 					<div
 						class="b--black bw1 flex flex-row relative items-center justify-center"
 					>
-						<label for="subject" class="f5-ns f6 fw7 code gray-40 pl2 pl3-ns"
+						<label for="subject" class="f5-ns f6 fw7 gray-40 pl2 pl3-ns"
 							>Subject:</label
 						>
 						<input
