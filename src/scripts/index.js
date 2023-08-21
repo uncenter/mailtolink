@@ -1,5 +1,52 @@
-import './lightswitch.js';
-import Clipboard from 'clipboard';
+function systemTheme() {
+	window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function darkMode() {
+	document.body.classList.replace('light', 'dark');
+}
+
+function lightMode() {
+	document.body.classList.replace('dark', 'light');
+}
+
+let theme = systemTheme();
+
+if (localStorage.getItem('theme') === 'dark') {
+	darkMode();
+} else if (localStorage.getItem('theme') === 'light') {
+	lightMode();
+} else if (theme === 'dark') {
+	darkMode();
+} else if (theme === 'light') {
+	lightMode();
+}
+
+document.getElementById('nav-light').addEventListener('click', () => {
+	if (document.body.classList.contains('light')) {
+		darkMode();
+		localStorage.setItem('theme', 'dark');
+	} else {
+		lightMode();
+		localStorage.setItem('theme', 'light');
+	}
+});
+
+window
+	.matchMedia('(prefers-color-scheme: dark)')
+	.addEventListener('change', () => {
+		if (!localStorage.getItem('theme')) {
+			theme = systemTheme();
+			if (theme === 'light') {
+				lightMode();
+			} else if (theme === 'dark') {
+				darkMode();
+			}
+			localStorage.setItem('theme', theme);
+		}
+	});
+
+// ---
 
 const ccSection = document.querySelector('.ccSection'),
 	bccSection = document.querySelector('.bccSection'),
@@ -8,43 +55,38 @@ const ccSection = document.querySelector('.ccSection'),
 	input = document.querySelectorAll('.input'),
 	copyCode = document.querySelector('.copyCode');
 
-for (let item of input) {
+for (const item of input) {
 	item.addEventListener('keyup', (e) => {
-		const value = e.target.value,
-			id = e.target.id,
-			output = document.querySelector('.' + id + 'Output'),
-			link = document.querySelector('.mailto-link-container'),
-			label = document.getElementById('' + id + 'Label'),
-			comma = new RegExp(',');
-		console.log(output, id, label, value);
+		const value = e.target.value;
+		const id = e.target.id;
+		const output = document.querySelector(`.${id}Output`);
+		const link = document.querySelector('.mailto-link-container');
+		const label = document.getElementById(`${id}Label`);
 
 		output.innerText = value;
 
-		//If not recipient input then show adjoining label when value over 1 else hide
-		if (id != 'recipient') {
+		// If not recipient input then show adjoining label when value over 1 else hide
+		if (id !== 'recipient') {
 			if (value.length >= 1) {
 				label.classList.add('dib');
 			} else {
 				label.classList.remove('dib');
-				//link.classList.remove('active');
 			}
 		}
 
-		if (id == 'recipient' || id == 'cc' || id == 'bcc') {
+		if (id === 'recipient' || id === 'cc' || id === 'bcc') {
 			link.classList.add('active');
 
-			//if email field and comma, then remove space after it in output
-			if (comma.test(value)) {
-				let str = output.innerHTML;
-				str = str.replace(/\s+/g, '');
-				output.innerHTML = str;
+			// If email field and comma, then remove space after it in output
+			if (/,/.test(value)) {
+				output.innerHTML = output.innerHTML.replace(/\s+/g, '');
 			} else {
 				output.innerHTML = value;
 			}
 		}
 
-		//Show email address when email field has 3 chars or more, hide if not.
-		if (id == 'recipient') {
+		// Show email address when email field has 3 chars or more, hide if not.
+		if (id === 'recipient') {
 			if (value.length >= 3) {
 				link.classList.add('active');
 			} else {
@@ -52,11 +94,10 @@ for (let item of input) {
 			}
 		}
 
-		//if subject or body, replace spaces and line breaks
-		if (id == 'subject' || id == 'body') {
+		// If subject or body, replace spaces and line breaks
+		if (id === 'subject' || id === 'body') {
 			let str = output.innerText;
 			let strBreak = '%0A';
-			//console.log(str);
 			let newStr = encodeURIComponent(str).replace(/%0A/g, '%0D%0A');
 			// str = str.replace(/\n/g, '%0d%0a')
 			// str = str.replace(/\n/g, "%0A").replace(/ /g, "%20").replace(/&/g, "%26");
@@ -83,35 +124,16 @@ bccBtn.addEventListener('click', function (e) {
 	}
 });
 
-var clipboard = new Clipboard('.copyCode', {
-	target: function (trigger) {
-		console.log((trigger.innerHTML = 'Copied'));
-		return trigger.previousElementSibling;
-		//return document.getElementById('password')
-	},
-});
-
-clipboard.on('success', function (e, el) {
-	var elems = document.getElementsByClassName('copyCode');
-	for (var i = 0; i < elems.length; i += 1) {
-		elems[i].innerHTML = 'Copy';
-	}
-	e.trigger.innerHTML = 'Copied';
-});
-
 copyCode.addEventListener('click', function (e) {
 	const labelVisible = document.querySelectorAll('.label.dib'),
 		labelFirst = labelVisible[0],
 		label = document.querySelector('.label.dib'),
 		labelCount = labelVisible.length;
 
-	//console.log(labelCount);
-
 	for (let item of labelVisible) {
 		if (item.innerHTML.indexOf('&') === -1) {
 			item.prepend('&');
 		}
-		//console.log(labelFirst.innerHTML);
 	}
 
 	if (labelFirst) {
@@ -124,6 +146,16 @@ copyCode.addEventListener('click', function (e) {
 		}
 	}
 
+	window.navigator.clipboard.writeText(
+		copyCode.previousElementSibling.textContent,
+	);
+
+	copyCode.textContent = 'Copied!';
+
+	setTimeout(() => {
+		copyCode.textContent = 'Copy';
+	}, 1500);
+
 	// let mailtoText = document.querySelector('.mailto-text').innerText.replace("%0A", "%0D%0A");
 
 	// mailtoText = mailtoText.replace("%0A", "%0D%0A");
@@ -131,13 +163,8 @@ copyCode.addEventListener('click', function (e) {
 	// console.log(`Spaces gone?:: ${mailtoText}`);
 });
 
-clipboard.on('success', function (e, el) {
-	var elems = document.getElementsByClassName('copyCode');
-	e.trigger.innerHTML = 'Copied!';
-
-	copyCode.addEventListener('mouseover', function (e) {
-		if ((copyCode.innerHTML = 'Copied!')) {
-			copyCode.innerHTML = 'Copy Code';
-		}
-	});
+copyCode.addEventListener('mouseover', function (e) {
+	if ((copyCode.textContent = 'Copied!')) {
+		copyCode.textContent = 'Copy';
+	}
 });
