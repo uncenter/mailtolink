@@ -19,7 +19,8 @@
 			"url": "https://uncenter.dev"
 		},
 		{
-			"name": "Michael Mckeever"
+			"name": "Michael Mckeever",
+			"url": "https://mckvr.com"
 		}
 	],
 	"dependencies": {
@@ -35,5 +36,6 @@
 	"devDependencies": {
 		"prettier": "^3.0.1",
 		"rimraf": "^5.0.1"
-	}
+	},
+	"packageManager": "pnpm@8.6.12"
 }
