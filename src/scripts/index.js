@@ -3,11 +3,6 @@ class Params {
 		this.params = new Map();
 	}
 
-	get(key) {
-		const values = this.params.get(key);
-		return values ? values[0] : null;
-	}
-
 	set(key, value) {
 		this.params.set(key, [value]);
 	}
@@ -53,16 +48,9 @@ function updateResult() {
 	]) {
 		let value = (element?.value || '').trim();
 
-		// Replace spaces and line breaks in subject/body inputs
+		// Replace spaces and line breaks in subject/body inputs according to RFC6068: https://datatracker.ietf.org/doc/html/rfc6068#section-5.
 		if (['subject', 'body'].includes(name)) {
 			value = encodeURIComponent(value).replace(/%0A/g, '%0D%0A');
-		}
-
-		// If email field and comma, then remove space after it
-		if (['recipient', 'cc', 'bcc'].includes(name)) {
-			if (/,/.test(value)) {
-				value = value.replace(/\s+/g, '');
-			}
 		}
 
 		if (value !== '') params.set(name, value);
