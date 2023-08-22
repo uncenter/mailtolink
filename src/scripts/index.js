@@ -34,6 +34,8 @@ const bccInput = document.querySelector('input#bcc');
 const subjectInput = document.querySelector('input#subject');
 const bodyInput = document.querySelector('textarea#body');
 
+const inputEls = [recipientInput, ccInput, bccInput, subjectInput, bodyInput];
+
 const mailToText = document.querySelector('.mailto-text');
 const mailToContainer = document.querySelector('.mailto-link-container');
 
@@ -62,11 +64,7 @@ function updateResult() {
 }
 
 function updateMailToContainer() {
-	if (
-		[recipientInput, ccInput, bccInput].filter(
-			(e) => e.checkValidity() && e.value !== '',
-		).length === 0
-	) {
+	if (inputEls.every((e) => e.value === '')) {
 		mailToContainer.classList.remove('active');
 		return;
 	}
@@ -77,13 +75,7 @@ function updateMailToContainer() {
 
 updateMailToContainer();
 
-for (const input of [
-	recipientInput,
-	ccInput,
-	bccInput,
-	subjectInput,
-	bodyInput,
-]) {
+for (const input of inputEls) {
 	input.addEventListener('input', (e) => {
 		updateMailToContainer();
 	});
