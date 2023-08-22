@@ -26,6 +26,9 @@ dependencies:
   sass:
     specifier: ^1.64.2
     version: 1.64.2
+  uglify-js:
+    specifier: ^3.17.4
+    version: 3.17.4
 
 devDependencies:
   prettier:
@@ -2148,7 +2151,6 @@ packages:
     hasBin: true
     requiresBuild: true
     dev: false
-    optional: true
 
   /unpipe@1.0.0:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}

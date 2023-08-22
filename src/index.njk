@@ -3,9 +3,18 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="{{ site.description }}" />
 		<title>{{ site.title }}</title>
+	
+		<script>
+            {{ inlined.js.lightswitch | safe }}
+        </script>
 
+        <style>
+			{{ inlined.css.fonts | safe }}
+		</style>
+		<link rel="stylesheet" href="/styles/index.css" />
+
+        <meta name="description" content="{{ site.description }}" />
 		<meta name="theme-color" content="{{ site.theme_color }}" />
 		<meta
 			name="msapplication-navbutton-color"
@@ -19,36 +28,6 @@
 		<meta property="og:title" content="{{ site.title }}" />
 		<meta property="og:description" content="{{ site.description }}" />
 		<meta property="og:image" content="{{ url }}/assets/{{ site.logo }}" />
-
-		<style>
-			/* ibm-plex-mono-regular - latin */
-			@font-face {
-				font-display: swap;
-				font-family: 'IBM Plex Mono';
-				font-style: normal;
-				font-weight: 400;
-				src: url('/fonts/ibm-plex-mono-v19-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-			}
-
-			/* ibm-plex-mono-600 - latin */
-			@font-face {
-				font-display: swap;
-				font-family: 'IBM Plex Mono';
-				font-style: normal;
-				font-weight: 600;
-				src: url('/fonts/ibm-plex-mono-v19-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-			}
-
-			/* ibm-plex-mono-700 - latin */
-			@font-face {
-				font-display: swap;
-				font-family: 'IBM Plex Mono';
-				font-style: normal;
-				font-weight: 700;
-				src: url('/fonts/ibm-plex-mono-v19-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-			}
-		</style>
-		<link rel="stylesheet" href="/styles/index.css" />
 
 		<link
 			rel="apple-touch-icon"
@@ -121,11 +100,11 @@
 							class="input input-reset tagify pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5"
 							type="email"
 							autofocus
-                            multiple
+							multiple
 						/>
 						<div class="mr2 mr3-ns">
 							<a
-                                id="cc-button"
+								id="cc-button"
 								class="f5-ns f7 fw6 br2 ph2 tdn tc pv2 dib btn-sm"
 								href="javascript:void(0);"
 								tabindex="6"
@@ -134,7 +113,7 @@
 						</div>
 						<div class="mr2 mr3-ns">
 							<a
-                                id="bcc-button"
+								id="bcc-button"
 								class="f5-ns f7 fw6 br2 ph2 tdn tc pv2 dib btn-sm"
 								href="javascript:void(0);"
 								tabindex="7"
@@ -153,7 +132,7 @@
 								tabindex="2"
 								class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5"
 								type="email"
-                                multiple
+								multiple
 							/>
 						</div>
 					</div>
@@ -168,7 +147,7 @@
 								tabindex="3"
 								class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5"
 								type="email"
-                                multiple
+								multiple
 							/>
 						</div>
 					</div>
@@ -207,8 +186,7 @@
 				<div
 					class="output mailto-link white bg-black br-pill b b--white flex-row items-center justify-between"
 				>
-					<span class="mailto-text">
-					</span>
+					<span class="mailto-text"></span>
 					<a class="btn btn-md fw6 ml2 copyCode" href="javascript:void(0);"
 						>Copy</a
 					>

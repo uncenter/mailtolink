@@ -29,7 +29,8 @@
 		"cssnano": "^6.0.1",
 		"postcss": "^8.4.28",
 		"purgecss": "^5.0.0",
-		"sass": "^1.64.2"
+		"sass": "^1.64.2",
+		"uglify-js": "^3.17.4"
 	},
 	"devDependencies": {
 		"prettier": "^3.0.1",
