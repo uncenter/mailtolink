@@ -67,21 +67,7 @@ textarea {
 	overflow: hidden;
 	textarea {
 		height: 95%;
-		//max-height: 58.5vh;
-		&::-webkit-input-placeholder {
-			/* Chrome/Opera/Safari */
-			color: $gray;
-		}
-		&::-moz-placeholder {
-			/* Firefox 19+ */
-			color: $gray;
-		}
-		&:-ms-input-placeholder {
-			/* IE 10+ */
-			color: $gray;
-		}
-		&:-moz-placeholder {
-			/* Firefox 18- */
+		&::placeholder {
 			color: $gray;
 		}
 	}
@@ -111,48 +97,6 @@ textarea {
 		height: 20px;
 	}
 }
-
-// .btn-mode-dark {
-//   path:first-of-type {
-//     fill: $white;
-//   }
-//   path:last-of-type {
-//     fill: $black;
-//   }
-// }
-
-// .gh-button {
-//   color: $near-black;
-//   &:hover {
-//     .tooltip {
-//       transform: translateX(0);
-//       visibility: visible;
-//       opacity: 1;
-//     }
-//   }
-// }
-
-// .tooltip {
-//   color: $white;
-//   transition: all $mode-timing ease;
-//   background-color: $near-black;
-//   font-size: $font-size-7;
-//   border-radius: $border-radius-2;
-//   visibility: hidden;
-//   opacity: 0;
-//   transform: translateX(-5px);
-//   &:before {
-//     content: "";
-//     position: absolute;
-//     left: -4px;
-//     top: calc(50% - 4px);
-//     width: 0;
-//     height: 0;
-//     border-top:  4px solid transparent;
-//     border-bottom:  4px solid transparent;
-//     border-right: 4px solid $black;
-//   }
-// }
 
 .btn-sm {
 	border: 1px solid $gray-30;
@@ -297,6 +241,7 @@ textarea {
 		}
 	}
 }
+
 /* purgecss end ignore */
 
 .mailto-link {
@@ -306,8 +251,8 @@ textarea {
 	color: $white;
 	box-shadow: 0 10px 40px 0 rgba(17, 38, 57, 0.4);
 	padding: 0.45rem 0.45rem 0.45rem 1.5rem;
-	max-width: 450px;
-	width: 100%;
+	width: fit-content;
+	max-width: 60%;
 	@media (min-width: 500px) {
 		font-size: $font-size-5;
 	}
@@ -332,7 +277,6 @@ textarea {
 	display: inline-block;
 	background-color: $light-green;
 	transition: all 0.2s ease;
-	//text-shadow: 0 1px 1px rgba(0,0,0,.1);
 	transform: scale(1);
 	&:hover,
 	&:focus {
@@ -351,7 +295,6 @@ textarea {
 	line-height: 40px;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	// width: 160px;
 	white-space: nowrap;
 }
 .bg-tile {
@@ -374,16 +317,13 @@ textarea {
 	color: $black;
 }
 
-::-moz-selection {
-	background: $light-green;
-	color: $white;
-}
 ::selection {
 	background: $light-green;
 	color: $white;
 }
 
 /* purgecss start ignore */
+
 .dark {
 	body,
 	input,
@@ -435,43 +375,13 @@ textarea {
 		}
 	}
 	.email-body {
-		&::-webkit-input-placeholder {
-			/* Chrome/Opera/Safari */
+		&::placeholder {
 			color: $white;
-		}
-		&::-moz-placeholder {
-			/* Firefox 19+ */
-			color: $white;
-		}
-		&:-ms-input-placeholder {
-			/* IE 10+ */
-			color: $white;
-		}
-		&:-moz-placeholder {
-			/* Firefox 18- */
-			color: $white;
-		}
-	}
-	.gh-button {
-		color: $white;
-		&:hover {
-			.tooltip {
-				transform: translateX(0);
-				visibility: visible;
-				opacity: 1;
-			}
-		}
-	}
-	.tooltip {
-		color: $black;
-		background-color: $white;
-		&:before {
-			content: '';
-			border-right: 4px solid $white;
 		}
 	}
 }
-/* purgecss end ignore */
+
+/* purgecss start ignore */
 
 @media (prefers-reduced-motion: reduce) {
 	*,
