@@ -4,15 +4,17 @@
 
 A quick and easy way to generate markup for mailto links without having to worry about the annoying formatting.
 
+> **Note**
+> This project is forked from [mckeever02/mailtolink](https://github.com/mckeever02/mailtolink).
+
 ## Develop
 
-```
-pnpm install
-pnpm dev
+```sh
+pnpm install  # install dependencies
+pnpm dev      # start development server
+pnpm build    # run production build
 ```
 
-## Build
+## License
 
-```
-pnpm build
-```
+[MIT](LICENSE)
