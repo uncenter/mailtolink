@@ -3,5 +3,5 @@
 	"title": "The Mailto Link Generator",
 	"description": "Mailto link code and markup generator with subject, body, cc and bcc. Quickly and easily generate code for those annoying mailto links.",
 	"logo": "card-image.png",
-	"domain": "mailtolink.me"
+	"domain": "mailtolink.pages.dev"
 }
