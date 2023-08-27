@@ -36,8 +36,8 @@ const bodyInput = document.querySelector('textarea#body');
 
 const inputEls = [recipientInput, ccInput, bccInput, subjectInput, bodyInput];
 
-const mailToText = document.querySelector('.mailto-text');
-const mailToContainer = document.querySelector('.mailto-link-container');
+const mailToText = document.querySelector('#mailto-text');
+const mailToContainer = document.querySelector('#mailto-link-container');
 
 function updateResult() {
 	const params = new Params();
@@ -84,8 +84,8 @@ for (const input of inputEls) {
 const ccBtn = document.querySelector('#cc-button');
 const bccBtn = document.querySelector('#bcc-button');
 
-const ccSection = document.querySelector('.ccSection');
-const bccSection = document.querySelector('.bccSection');
+const ccSection = document.querySelector('#cc-section');
+const bccSection = document.querySelector('#bcc-section');
 
 ccBtn.addEventListener('click', function (e) {
 	if (ccSection.classList.contains('hidden')) {

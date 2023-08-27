@@ -1,6 +1,8 @@
 @import 'normalize';
 @import 'variables';
 
+/* purgecss start ignore */
+
 html,
 body {
 	height: 100%;
@@ -23,15 +25,6 @@ textarea {
 
 textarea {
 	resize: none;
-}
-
-.email-window,
-.email-header,
-.email-compose,
-.email-body,
-.email-window:before,
-.email-window:after {
-	@apply bg-white;
 }
 
 @keyframes slideIn {
@@ -63,9 +56,18 @@ textarea {
 	}
 }
 
-.email-window {
+#email-window,
+#email-header,
+#email-compose,
+#email-body,
+#email-window:before,
+#email-window:after {
+	@apply bg-white;
+}
+
+#email-window {
+	@apply border border-solid border-gray-300 w-[90%] mx-auto h-full flex flex-col;
 	max-width: 67rem;
-	border: 1px solid $border-color;
 	border-top: 0;
 	position: relative;
 	border-radius: 0;
@@ -73,12 +75,13 @@ textarea {
 	min-height: 80vh;
 	animation: 0.3s ease 0s 1 slideIn;
 	animation-fill-mode: forwards;
-	transition: background-color $mode-timing ease;
+	transition: background-color 0.2s ease;
 	margin-top: 5rem;
+
 	&:before {
+		@apply border border-solid border-gray-300;
 		content: '';
 		height: 100%;
-		border: 1px solid $border-color;
 		position: absolute;
 		width: calc(100% - 12px);
 		animation: 0.3s ease 0s 1 slideIn1;
@@ -89,15 +92,18 @@ textarea {
 		left: 6px;
 		z-index: -1;
 	}
-	@media #{$breakpoint-not-small} {
+
+	@media (min-width: 480px) {
 		margin-top: 9.5rem;
+
 		&:before,
 		&:after {
 			content: '';
 			height: 100%;
-			border: 1px solid $border-color;
+			@apply border border-solid border-gray-300;
 			position: absolute;
 		}
+
 		&:after {
 			animation: 0.3s ease 0s 1 slideIn2;
 			animation-delay: 0.5s;
@@ -109,25 +115,26 @@ textarea {
 			z-index: -2;
 		}
 	}
-	@media (min-width: 1921px) {
+
+	@media (min-width: 1920px) {
 		max-width: 86rem;
 	}
 }
 
-.email-header {
-	border-bottom: 1px solid $border-color;
-	border-top: 1px solid $border-color;
-	transition: all $mode-timing ease;
+#email-header {
+	@apply p-4 flex justify-center items-center w-full text-center relative;
+	border-bottom: 1px solid #d5d5d5;
+	border-top: 1px solid #d5d5d5;
+	transition: all 0.2s ease;
 }
 
-.email-compose {
-	border-color: $border-color;
-	transition: all $mode-timing ease;
+#email-compose {
+	@apply border-gray-300 border-b [border-bottom-style:solid];
+	transition: all 0.2s ease;
 }
 
-/* purgecss start ignore */
-
-.mailto-link-container {
+#mailto-link-container {
+	@apply absolute w-full flex justify-center px-2;
 	visibility: hidden;
 	height: 0;
 	width: 0;
@@ -136,40 +143,41 @@ textarea {
 	transition: transform 0.2s ease;
 	margin: auto;
 	z-index: 200;
-	.mailto-link {
+
+	#mailto-link {
 		display: none;
 	}
+
 	&.active {
 		visibility: visible;
 		height: auto;
 		width: 100%;
 		transform: translateY(0);
-		.mailto-link {
+
+		#mailto-link {
 			display: flex;
 		}
 	}
 }
 
-/* purgecss end ignore */
-
-.mailto-link {
-	font-size: $font-size-6;
-	transition: all $mode-timing ease;
-	background-color: $near-black;
-	color: $white;
+#mailto-link {
+	@apply text-sm text-white bg-theme-black rounded-full font-bold border-white flex-row items-center justify-between;
+	transition: all 0.2s ease;
 	box-shadow: 0 10px 40px 0 rgba(17, 38, 57, 0.4);
 	padding: 0.45rem 0.45rem 0.45rem 1.5rem;
 	width: fit-content;
 	max-width: 60%;
-	@media (min-width: 500px) {
-		font-size: $font-size-5;
+
+	@media (min-width: 480px) {
+		font-size: 1rem;
 	}
-	@media (min-width: 1921px) {
+
+	@media (min-width: 1920px) {
 		max-width: 500px;
 	}
 }
 
-.mailto-text {
+#mailto-text {
 	width: 100%;
 	display: inline-block;
 	white-space: nowrap;
@@ -178,87 +186,84 @@ textarea {
 	text-overflow: ellipsis;
 }
 
-.btn {
+#copy-code {
+	@apply text-theme-black rounded-full font-semibold ml-2;
 	text-decoration: none;
 	text-align: center;
-	color: $black;
 	display: inline-block;
-	background-color: $light-green;
+	background-color: #64ebcd;
 	transition: all 0.2s ease;
 	transform: scale(1);
+	line-height: 40px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	white-space: nowrap;
+	border: none;
+
 	&:hover,
 	&:focus {
-		background-color: darken($light-green, 5%);
+		background-color: #4de8c6;
 	}
+
 	&:hover {
 		transform: scale(0.98);
 	}
+
 	&:active {
 		transform: scale(1.05);
 	}
 }
 
-.btn-md {
-	border-radius: $border-radius-pill;
-	line-height: 40px;
-	padding-left: 1rem;
-	padding-right: 1rem;
-	white-space: nowrap;
-}
-
-.bg-tile {
+body {
 	background-image: url('/assets/tile.svg');
 	background-repeat: repeat;
 	background-size: 60%;
 	background-position: -3px -45%;
-	background-color: $lighter-green;
-	transition: background-color $mode-timing ease;
-	@media #{$breakpoint-not-small} {
+	background-color: #effcf9;
+	transition: background-color 0.2s ease;
+
+	@media (min-width: 480px) {
 		background-size: 15%;
 		background-position: -3px -3px;
 	}
-	@media (min-width: 1921px) {
+
+	@media (min-width: 1920px) {
 		background-size: 10%;
 	}
 }
 
 ::selection {
-	background: $light-green;
-	color: $white;
+	@apply text-white;
+	background: #64ebcd;
 }
-
-/* purgecss start ignore */
 
 :root[theme='dark'] {
 	body,
 	input,
 	textarea {
-		color: $white;
+		@apply text-white;
 	}
-	.bg-tile {
+	body {
 		background-image: url('/assets/tile-dark.svg');
-		background-color: $black;
+		@apply bg-theme-black;
 	}
-	.email-window,
-	.email-header,
-	.email-compose,
-	.email-body,
-	.email-window:before,
-	.email-window:after {
-		background-color: lighten($black, 3%);
-		border-color: darken($black, 20%);
+	#email-window,
+	#email-header,
+	#email-compose,
+	#email-body,
+	#email-window:before,
+	#email-window:after {
+		@apply border-black;
+		background-color: #191919;
 	}
-	.email-header {
-		color: $white;
+	#email-header {
+		@apply text-white;
 	}
-	.mailto-link {
-		background-color: $white;
-		color: $black;
+	#mailto-link {
+		@apply bg-white text-theme-black;
 		box-shadow: none;
 	}
 }
-
-/* purgecss start ignore */
 
 @media (prefers-reduced-motion: reduce) {
 	*,
@@ -267,7 +272,8 @@ textarea {
 		animation: none !important;
 		transition: none !important;
 	}
-	.email-window {
+
+	#email-window {
 		&:before {
 			content: '';
 			top: -6px;

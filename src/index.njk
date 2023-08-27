@@ -4,58 +4,38 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{{ site.title }}</title>
-	
-		<script>
-            {{ inlined.js.lightswitch | safe }}
-        </script>
 
-        <style>
+		<script>
+			{{ inlined.js.lightswitch | safe }}
+		</script>
+
+		<style>
 			{{ inlined.css.fonts | safe }}
 		</style>
 		<link rel="stylesheet" href="/styles/index.css" />
 
-        <script async src="https://analytik.uncenter.dev/script.js" data-website-id="1f1be167-512e-4aca-b3a2-264ce41d814c"></script>
+		<script
+			async
+			src="https://analytik.uncenter.dev/script.js"
+			data-website-id="1f1be167-512e-4aca-b3a2-264ce41d814c"
+		></script>
 
-        <meta name="description" content="{{ site.description }}" />
+		<meta name="description" content="{{ site.description }}" />
 		<meta name="theme-color" content="{{ site.theme_color }}" />
-		<meta
-			name="msapplication-navbutton-color"
-			content="{{ site.theme_color }}"
-		/>
-		<meta
-			name="apple-mobile-web-app-status-bar-style"
-			content="{{ site.theme_color }}"
-		/>
+		<meta name="msapplication-navbutton-color" content="{{ site.theme_color }}" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="{{ site.theme_color }}" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta property="og:title" content="{{ site.title }}" />
 		<meta property="og:description" content="{{ site.description }}" />
 		<meta property="og:image" content="{{ url }}/assets/{{ site.logo }}" />
 
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="/assets/apple-touch-icon.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="/assets/favicon-32x32.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="/assets/favicon-16x16.png"
-		/>
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
 		<link rel="manifest" href="/assets/site.webmanifest" />
-		<link
-			rel="mask-icon"
-			href="/assets/safari-pinned-tab.svg"
-			color="#5bbad5"
-		/>
+		<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5" />
 	</head>
-	<body class="bg-tile" id="top">
+	<body>
 		<main class="h-full flex flex-col">
 			<div class="flex flex-row p-4 justify-between items-center w-full">
 				<div class="w-full flex flex-row justify-end">
@@ -67,33 +47,32 @@
 					>
 						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<g fill="none" fill-rule="evenodd">
-								<path class="fill-black dark:fill-white"
+								<path
+									class="fill-theme-black dark:fill-white"
 									d="M15 21h3v3H6v-3H3v-3H0V6h3V3h3V0h12v3h3v3h3v12h-3v3h-6zm3-3v3z"
 								/>
-								<path class="fill-white dark:fill-black" d="M15 18v3h-3V3h3v3h3v3h3v6h-3v3h-3z" />
+								<path
+									class="fill-white dark:fill-theme-black"
+									d="M15 18v3h-3V3h3v3h3v3h3v6h-3v3h-3z"
+								/>
 							</g>
 						</svg>
 					</button>
 				</div>
 			</div>
-			<div class="w-[90%] mx-auto email-window h-full flex flex-col">
-				<div
-					class="p-4 flex justify-center items-center w-full text-center relative email-header"
-				>
-					<div
-						class="absolute left-0 flex flex-row pl-4 h-full justify-between items-center"
-					>
-                        {% for i in range(0, 3) -%}
-						    <div class="bg-gray-300 transition-[background-color] duration-200 ease-[ease] w-2.5 h-2.5 mr-1 xs:w-3 xs:h-3 xs:mr-2 rounded-full inline-block"></div>
+			<div id="email-window">
+				<div id="email-header">
+					<div class="absolute left-0 flex flex-row pl-4 h-full justify-between items-center">
+						{% for i in range(0, 3) -%}
+                            <div class="bg-gray-300 transition-[background-color] duration-200 ease-[ease] w-2.5 h-2.5 mr-1 xs:w-3 xs:h-3 xs:mr-2 rounded-full inline-block"
+                            ></div>
 						{%- endfor %}
 					</div>
 					<h1 class="text-base m-0 font-semibold">{{ site.domain }}</h1>
 				</div>
-				<div class="border-b [border-bottom-style:solid] email-compose">
+				<div id="email-compose">
 					<div class="flex flex-row relative items-center justify-center">
-						<label for="recipient" class="text-base text-gray-400 font-semibold pl-4"
-							>To:</label
-						>
+						<label for="recipient" class="text-base text-gray-400 font-semibold pl-4">To:</label>
 						<input
 							id="recipient"
 							tabindex="1"
@@ -104,29 +83,25 @@
 							multiple
 						/>
 						<div class="mr-4">
-							<a
+							<button
 								id="cc-button"
-								class="text-base font-semibold rounded px-2 text-center py-2 inline-block border border-gray-300 dark:border-[#000] text-gray-400 w-12 no-underline transition-all duration-100 ease-[ease] border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white xs:w-[60px]"
-								href="javascript:void(0);"
+								class="text-base font-semibold rounded px-2 text-center py-2 inline-block border border-gray-300 dark:border-black text-gray-400 w-12 no-underline transition-all duration-100 ease-[ease] border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white xs:w-[60px]"
 								tabindex="6"
-								>Cc:</a
+								>Cc:</button
 							>
 						</div>
 						<div class="mr-4">
-							<a
+							<button
 								id="bcc-button"
-								class="text-base font-semibold rounded px-2 text-center py-2 inline-block border border-gray-300 dark:border-[#000] text-gray-400 w-12 no-underline transition-all duration-100 ease-[ease] border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white xs:w-[60px]"
-								href="javascript:void(0);"
+								class="text-base font-semibold rounded px-2 text-center py-2 inline-block border border-gray-300 dark:border-black text-gray-400 w-12 no-underline transition-all duration-100 ease-[ease] border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white xs:w-[60px]"
 								tabindex="7"
-								>Bcc:</a
+								>Bcc:</button
 							>
 						</div>
 					</div>
-					<div class="hidden ccSection">
+					<div id="cc-section" class="hidden">
 						<div class="flex flex-row relative items-center justify-center">
-							<label for="cc" class="text-base font-bold text-gray-400 pl-4"
-								>Cc:</label
-							>
+							<label for="cc" class="text-base font-bold text-gray-400 pl-4">Cc:</label>
 							<input
 								id="cc"
 								name="cc"
@@ -137,11 +112,9 @@
 							/>
 						</div>
 					</div>
-					<div class="hidden bccSection">
+					<div id="bcc-section" class="hidden">
 						<div class="flex flex-row relative items-center justify-center">
-							<label for="bcc" class="text-base font-bold text-gray-400 pl-4"
-								>Bcc:</label
-							>
+							<label for="bcc" class="text-base font-bold text-gray-400 pl-4">Bcc:</label>
 							<input
 								id="bcc"
 								name="bcc"
@@ -153,11 +126,9 @@
 						</div>
 					</div>
 					<div
-						class="border-black border-2 flex flex-row relative items-center justify-center"
+						class="border-theme-black border-2 flex flex-row relative items-center justify-center"
 					>
-						<label for="subject" class="text-base font-bold text-gray-400 pl-4"
-							>Subject:</label
-						>
+						<label for="subject" class="text-base font-bold text-gray-400 pl-4">Subject:</label>
 						<input
 							id="subject"
 							tabindex="4"
@@ -167,10 +138,10 @@
 						/>
 					</div>
 				</div>
-				<div class="bg-white dark:bg-[#191919] transition-all duration-200 ease-[ease] h-full 2xl:min-h-[70vh] overflow-hidden w-full pt-4">
-					<label for="body" class="text-base text-gray-400 font-semibold pl-4 block"
-						>Body:</label
-					>
+				<div
+					class="bg-white dark:bg-[#191919] transition-all duration-200 ease-[ease] h-full 3xl:min-h-[70vh] overflow-hidden w-full pt-4"
+				>
+					<label for="body" class="text-base text-gray-400 font-semibold pl-4 block">Body:</label>
 					<textarea
 						aria-label="message"
 						tabindex="5"
@@ -183,14 +154,10 @@
 				</div>
 			</div>
 
-			<div class="absolute mailto-link-container w-full flex justify-center px-2">
-				<div
-					class="output mailto-link text-white bg-black rounded-full font-bold border-white flex-row items-center justify-between"
-				>
-					<span class="mailto-text"></span>
-					<a id="copy-code" class="btn btn-md font-semibold ml-2" href="javascript:void(0);"
-						>Copy</a
-					>
+			<div id="mailto-link-container">
+				<div id="mailto-link">
+					<span id="mailto-text"></span>
+					<button id="copy-code">Copy</button>
 				</div>
 			</div>
 		</main>
