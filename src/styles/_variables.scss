@@ -1,5 +1,3 @@
-// Converted Variables
-
 $sans-serif: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, helvetica,
 	'helvetica neue', ubuntu, roboto, noto, 'segoe ui', arial, sans-serif !default;
 $serif: georgia, serif !default;
@@ -130,8 +128,6 @@ $washed-green: #e8fdf5 !default;
 $washed-yellow: #fffceb !default;
 $washed-red: #ffdfdf !default;
 
-// Custom Media Query Variables
-
 $breakpoint-not-small: 'screen and (min-width: 30em)' !default;
 $breakpoint-medium: 'screen and (min-width: 30em) and (max-width: 60em)' !default;
 $breakpoint-large: 'screen and (min-width: 60em)' !default;
@@ -139,9 +135,3 @@ $breakpoint-large: 'screen and (min-width: 60em)' !default;
 $mode-timing: 0.2s;
 
 $border-color: $gray-30 !default;
-
-/*
-
-    VARIABLES
-
-*/
