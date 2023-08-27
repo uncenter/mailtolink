@@ -31,6 +31,7 @@
 		"postcss": "^8.4.28",
 		"purgecss": "^5.0.0",
 		"sass": "^1.66.1",
+		"tailwindcss": "^3.3.3",
 		"uglify-js": "^3.17.4"
 	},
 	"devDependencies": {

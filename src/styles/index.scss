@@ -1,39 +1,9 @@
-// ! TACHYONS v4.9.0 | http://tachyons.io
-
-//
-//      ________            ______
-//      ___  __/_____ _________  /______  ______________________
-//      __  /  _  __ `/  ___/_  __ \_  / / /  __ \_  __ \_  ___/
-//      _  /   / /_/ // /__ _  / / /  /_/ // /_/ /  / / /(__  )
-//      /_/    \__,_/ \___/ /_/ /_/_\__, / \____//_/ /_//____/
-//                                 /____/
-//
+// TACHYONS v4.9.0 | http://tachyons.io
 
 @import 'normalize';
 @import 'variables';
-
-@import 'box-sizing';
-@import 'borders';
-@import 'border-colors';
-@import 'border-radius';
-@import 'border-style';
-@import 'border-widths';
-@import 'code';
-@import 'coordinates';
-@import 'display';
-@import 'flexbox';
-@import 'font-weight';
-@import 'forms';
-@import 'heights';
-@import 'line-height';
-@import 'links';
-@import 'widths';
-@import 'position';
-@import 'skins';
-@import 'spacing';
-@import 'text-align';
-@import 'type-scale';
-@import 'utilities';
-@import 'white-space';
-@import 'nested';
 @import 'styles';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

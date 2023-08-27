@@ -55,121 +55,120 @@
 			color="#5bbad5"
 		/>
 	</head>
-	<body class="bg-tile light" id="top">
-		<main class="h-100 flex main flex-column">
-			<div class="flex pa3 flex-row justify-between align-items-center w-100">
-				<div class="d-block w-100 flex flex-row justify-end">
+	<body class="bg-tile" id="top">
+		<main class="h-full flex flex-col">
+			<div class="flex flex-row p-4 justify-between items-center w-full">
+				<div class="w-full flex flex-row justify-end">
 					<button
 						id="lightswitch"
-						class="button-reset bg-transparent b--none pa0 btn-mode"
+						class="bg-transparent border-none p-0 w-5 h-5 transition-transform ease-[ease] duration-300 hover:rotate-180 focus:[outline:none]"
 						type="button"
 						aria-label="Toggle light/dark mode"
 					>
 						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<g fill="none" fill-rule="evenodd">
-								<path
+								<path class="fill-black dark:fill-white"
 									d="M15 21h3v3H6v-3H3v-3H0V6h3V3h3V0h12v3h3v3h3v12h-3v3h-6zm3-3v3z"
 								/>
-								<path d="M15 18v3h-3V3h3v3h3v3h3v6h-3v3h-3z" />
+								<path class="fill-white dark:fill-black" d="M15 18v3h-3V3h3v3h3v3h3v6h-3v3h-3z" />
 							</g>
 						</svg>
 					</button>
 				</div>
 			</div>
-
-			<div class="mh2 w-90 center email-window h-100 flex flex-column">
+			<div class="w-[90%] mx-auto email-window h-full flex flex-col">
 				<div
-					class="pv3 ph2 ph3-ns flex justify-center items-center w-100 tc relative email-header"
+					class="p-4 flex justify-center items-center w-full text-center relative email-header"
 				>
 					<div
-						class="absolute left-0 flex flex-row pl2 pl3-ns h-100 justify-between items-center"
+						class="absolute left-0 flex flex-row pl-4 h-full justify-between items-center"
 					>
-						<div class="app-circle dib"></div>
-						<div class="app-circle dib"></div>
-						<div class="app-circle dib"></div>
+                        {% for i in range(0, 3) -%}
+						    <div class="bg-gray-300 transition-[background-color] duration-200 ease-[ease] w-2.5 h-2.5 mr-1 xs:w-3 xs:h-3 xs:mr-2 rounded-full inline-block"></div>
+						{%- endfor %}
 					</div>
-					<h1 class="f6 f5-ns ma0 fw6">{{ site.domain }}</h1>
+					<h1 class="text-base m-0 font-semibold">{{ site.domain }}</h1>
 				</div>
-				<div class="bb email-compose">
+				<div class="border-b [border-bottom-style:solid] email-compose">
 					<div class="flex flex-row relative items-center justify-center">
-						<label for="recipient" class="f5-ns f6 gray-40 fw6 pl2 pl3-ns"
+						<label for="recipient" class="text-base text-gray-400 font-semibold pl-4"
 							>To:</label
 						>
 						<input
 							id="recipient"
 							tabindex="1"
 							name="recipient"
-							class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5"
+							class="appearance-none py-4 h-full block w-full bg-transparent border-none pl-4 text-base"
 							type="email"
 							autofocus
 							multiple
 						/>
-						<div class="mr2 mr3-ns">
+						<div class="mr-4">
 							<a
 								id="cc-button"
-								class="f5-ns f7 fw6 br2 ph2 tdn tc pv2 dib btn-sm"
+								class="text-base font-semibold rounded px-2 text-center py-2 inline-block border border-gray-300 dark:border-[#000] text-gray-400 w-12 no-underline transition-all duration-100 ease-[ease] border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white xs:w-[60px]"
 								href="javascript:void(0);"
 								tabindex="6"
 								>Cc:</a
 							>
 						</div>
-						<div class="mr2 mr3-ns">
+						<div class="mr-4">
 							<a
 								id="bcc-button"
-								class="f5-ns f7 fw6 br2 ph2 tdn tc pv2 dib btn-sm"
+								class="text-base font-semibold rounded px-2 text-center py-2 inline-block border border-gray-300 dark:border-[#000] text-gray-400 w-12 no-underline transition-all duration-100 ease-[ease] border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white xs:w-[60px]"
 								href="javascript:void(0);"
 								tabindex="7"
 								>Bcc:</a
 							>
 						</div>
 					</div>
-					<div class="dn ccSection">
+					<div class="hidden ccSection">
 						<div class="flex flex-row relative items-center justify-center">
-							<label for="cc" class="f5-ns f7 fw7 gray-40 pl2 pl3-ns"
+							<label for="cc" class="text-base font-bold text-gray-400 pl-4"
 								>Cc:</label
 							>
 							<input
 								id="cc"
 								name="cc"
 								tabindex="2"
-								class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5"
+								class="appearance-none py-4 h-full block w-full bg-transparent border-none pl-4 text-base"
 								type="email"
 								multiple
 							/>
 						</div>
 					</div>
-					<div class="dn bccSection">
+					<div class="hidden bccSection">
 						<div class="flex flex-row relative items-center justify-center">
-							<label for="bcc" class="f5-ns f6 fw7 gray-40 pl2 pl3-ns"
+							<label for="bcc" class="text-base font-bold text-gray-400 pl-4"
 								>Bcc:</label
 							>
 							<input
 								id="bcc"
 								name="bcc"
 								tabindex="3"
-								class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5"
+								class="appearance-none py-4 h-full block w-full bg-transparent border-none pl-4 text-base"
 								type="email"
 								multiple
 							/>
 						</div>
 					</div>
 					<div
-						class="b--black bw1 flex flex-row relative items-center justify-center"
+						class="border-black border-2 flex flex-row relative items-center justify-center"
 					>
-						<label for="subject" class="f5-ns f6 fw7 gray-40 pl2 pl3-ns"
+						<label for="subject" class="text-base font-bold text-gray-400 pl-4"
 							>Subject:</label
 						>
 						<input
 							id="subject"
 							tabindex="4"
 							name="subject"
-							class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5"
+							class="appearance-none py-4 h-full block w-full bg-transparent border-none pl-4 text-base"
 							type="text"
 						/>
 					</div>
 				</div>
-				<div class="email-body w-100 pt2 pt3-ns">
-					<label for="body" class="f5-ns f6 gray-40 fw6 pl2 pl3-ns db"
+				<div class="bg-white dark:bg-[#191919] transition-all duration-200 ease-[ease] h-full 2xl:min-h-[70vh] overflow-hidden w-full pt-4">
+					<label for="body" class="text-base text-gray-400 font-semibold pl-4 block"
 						>Body:</label
 					>
 					<textarea
@@ -177,19 +176,19 @@
 						tabindex="5"
 						id="body"
 						name="body"
-						class="pa2 pa3-ns w-100 input input-reset bg-transparent b--none f5-ns f6 lh-copy"
+						class="h-[95%] p-4 w-full appearance-none bg-transparent border-none text-base leading-normal placeholder:text-[#777]"
 						placeholder="A simple markup generator for mailto links that takes care of the formatting for you. Just fill out the email and copy your code."
 						id="body"
 					></textarea>
 				</div>
 			</div>
 
-			<div class="absolute mailto-link-container w-100 flex justify-center ph2">
+			<div class="absolute mailto-link-container w-full flex justify-center px-2">
 				<div
-					class="output mailto-link white bg-black br-pill b b--white flex-row items-center justify-between"
+					class="output mailto-link text-white bg-black rounded-full font-bold border-white flex-row items-center justify-between"
 				>
 					<span class="mailto-text"></span>
-					<a class="btn btn-md fw6 ml2 copyCode" href="javascript:void(0);"
+					<a id="copy-code" class="btn btn-md font-semibold ml-2" href="javascript:void(0);"
 						>Copy</a
 					>
 				</div>

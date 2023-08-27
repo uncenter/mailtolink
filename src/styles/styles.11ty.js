@@ -13,10 +13,11 @@ class Page {
 		const content = sass.compile(`${__dirname}/index.scss`).css.toString();
 
 		let plugins = [
+			require('tailwindcss'),
 			require('autoprefixer'),
 			require('@fullhuman/postcss-purgecss')({
 				content: ['./src/index.njk'],
-				whitelist: ['dark', 'active'],
+				whitelist: ['[theme="dark"]', 'active'],
 			}),
 			require('cssnano'),
 		];

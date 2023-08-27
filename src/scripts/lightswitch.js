@@ -2,7 +2,7 @@ const systemTheme = () =>
 	window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
 function setTheme(theme, permanent = false) {
-	document.body.classList.replace(theme === 'dark' ? 'light' : 'dark', theme);
+	document.documentElement.setAttribute('theme', theme);
 	if (permanent) localStorage.setItem('theme', theme);
 }
 
@@ -11,7 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	document.querySelector('#lightswitch').addEventListener('click', () => {
 		setTheme(
-			document.body.classList.contains('light') ? 'dark' : 'light',
+			document.documentElement.getAttribute('theme') === 'light'
+				? 'dark'
+				: 'light',
 			true,
 		);
 	});

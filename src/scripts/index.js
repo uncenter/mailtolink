@@ -88,26 +88,26 @@ const ccSection = document.querySelector('.ccSection');
 const bccSection = document.querySelector('.bccSection');
 
 ccBtn.addEventListener('click', function (e) {
-	if (ccSection.classList.contains('dn')) {
-		ccSection.classList.remove('dn');
+	if (ccSection.classList.contains('hidden')) {
+		ccSection.classList.remove('hidden');
 		document.querySelector('#cc').focus();
 	} else {
-		ccSection.classList.add('dn');
+		ccSection.classList.add('hidden');
 	}
 });
 
 bccBtn.addEventListener('click', function (e) {
-	if (bccSection.classList.contains('dn')) {
-		bccSection.classList.remove('dn');
+	if (bccSection.classList.contains('hidden')) {
+		bccSection.classList.remove('hidden');
 		document.querySelector('#bcc').focus();
 	} else {
-		bccSection.classList.add('dn');
+		bccSection.classList.add('hidden');
 	}
 });
 
 // ---
 
-const copyCode = document.querySelector('.copyCode');
+const copyCode = document.querySelector('#copy-code');
 
 copyCode.addEventListener('click', function (e) {
 	window.navigator.clipboard.writeText(
