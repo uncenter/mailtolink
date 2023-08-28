@@ -1,7 +1,20 @@
 @import 'normalize';
-@import 'variables';
 
 /* purgecss start ignore */
+
+$white: #ffffff;
+$black: #000000;
+$gray: #9ca3af;
+
+$bg-white: #effcf9;
+$fg-white: #ffffff;
+$bg-black: #111111;
+$fg-black: #191919;
+
+$accent-black: #000000;
+$accent-gray: #d5d5d5;
+$accent-green: #64ebcd;
+$accent-green-dark: #4de8c6;
 
 html,
 body {
@@ -62,11 +75,17 @@ textarea {
 #email-body,
 #email-window:before,
 #email-window:after {
-	@apply bg-white;
+	background-color: $white;
 }
 
 #email-window {
-	@apply border border-solid border-gray-300 w-[90%] mx-auto h-full flex flex-col;
+	border: 1px solid $accent-gray;
+	width: 90%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
 	max-width: 67rem;
 	border-top: 0;
 	position: relative;
@@ -79,7 +98,7 @@ textarea {
 	margin-top: 5rem;
 
 	&:before {
-		@apply border border-solid border-gray-300;
+		border: 1px solid $accent-gray;
 		content: '';
 		height: 100%;
 		position: absolute;
@@ -100,7 +119,7 @@ textarea {
 		&:after {
 			content: '';
 			height: 100%;
-			@apply border border-solid border-gray-300;
+			border: 1px solid $accent-gray;
 			position: absolute;
 		}
 
@@ -122,19 +141,32 @@ textarea {
 }
 
 #email-header {
-	@apply p-4 flex justify-center items-center w-full text-center relative;
-	border-bottom: 1px solid #d5d5d5;
-	border-top: 1px solid #d5d5d5;
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-items: center;
+	text-align: center;
+	position: relative;
+	border-bottom: 1px solid $accent-gray;
+	border-top: 1px solid $accent-gray;
 	transition: all 0.2s ease;
 }
 
 #email-compose {
-	@apply border-gray-300 border-b [border-bottom-style:solid];
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-color: $accent-gray;
 	transition: all 0.2s ease;
 }
 
 #mailto-link-container {
-	@apply absolute w-full flex justify-center px-2;
+	position: absolute;
+	width: 100%;
+	display: flex;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	justify-content: center;
 	visibility: hidden;
 	height: 0;
 	width: 0;
@@ -161,7 +193,15 @@ textarea {
 }
 
 #mailto-link {
-	@apply text-sm text-white bg-theme-black rounded-full font-bold border-white flex-row items-center justify-between;
+	font-size: 0.875rem;
+	color: $white;
+	background-color: $bg-black;
+	border-radius: 9999px;
+	font-weight: 700;
+	border-color: $white;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 	transition: all 0.2s ease;
 	box-shadow: 0 10px 40px 0 rgba(17, 38, 57, 0.4);
 	padding: 0.45rem 0.45rem 0.45rem 1.5rem;
@@ -186,12 +226,37 @@ textarea {
 	text-overflow: ellipsis;
 }
 
+#cc-button,
+#bcc-button {
+	cursor: pointer;
+	background-color: transparent;
+	font-size: 1rem;
+	font-weight: 600;
+	border-radius: 0.25rem;
+	padding: 0.5rem;
+	text-align: center;
+	display: inline-block;
+	width: 3rem;
+	transition-property: all;
+	transition-timing-function: ease;
+	transition-duration: 100ms;
+
+	@media (min-width: 480px) {
+		width: 60px;
+	}
+
+	@apply border border-accent-gray dark:border-black text-gray border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white;
+}
+
 #copy-code {
-	@apply text-theme-black rounded-full font-semibold ml-2;
+	color: $bg-black;
+	border-radius: 9999px;
+	font-weight: 600;
+	margin-left: 0.5rem;
 	text-decoration: none;
 	text-align: center;
 	display: inline-block;
-	background-color: #64ebcd;
+	background-color: $accent-green;
 	transition: all 0.2s ease;
 	transform: scale(1);
 	line-height: 40px;
@@ -202,7 +267,7 @@ textarea {
 
 	&:hover,
 	&:focus {
-		background-color: #4de8c6;
+		background-color: $accent-green-dark;
 	}
 
 	&:hover {
@@ -219,7 +284,7 @@ body {
 	background-repeat: repeat;
 	background-size: 60%;
 	background-position: -3px -45%;
-	background-color: #effcf9;
+	background-color: $bg-white;
 	transition: background-color 0.2s ease;
 
 	@media (min-width: 480px) {
@@ -233,19 +298,19 @@ body {
 }
 
 ::selection {
-	@apply text-white;
-	background: #64ebcd;
+	color: $white;
+	background-color: $accent-green;
 }
 
 :root[theme='dark'] {
 	body,
 	input,
 	textarea {
-		@apply text-white;
+		color: $white;
 	}
 	body {
 		background-image: url('/assets/tile-dark.svg');
-		@apply bg-theme-black;
+		background-color: $bg-black;
 	}
 	#email-window,
 	#email-header,
@@ -253,14 +318,15 @@ body {
 	#email-body,
 	#email-window:before,
 	#email-window:after {
-		@apply border-black;
-		background-color: #191919;
+		border-color: $black;
+		background-color: $fg-black;
 	}
 	#email-header {
-		@apply text-white;
+		color: $white;
 	}
 	#mailto-link {
-		@apply bg-white text-theme-black;
+		background-color: $white;
+		color: $bg-black;
 		box-shadow: none;
 	}
 }

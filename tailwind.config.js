@@ -16,11 +16,25 @@ module.exports = {
 			colors: {
 				transparent: colors.transparent,
 				black: colors.black,
+				gray: '#9ca3af',
 				white: colors.white,
 				current: colors.current,
 
-				theme: {
+				bg: {
+					white: '#effcf9',
 					black: '#111111',
+				},
+
+				fg: {
+					white: '#ffffff',
+					black: '#191919',
+				},
+
+				accent: {
+					black: '#000000',
+					gray: '#d5d5d5',
+					green: '#64ebcd',
+					'green-dark': '#4de8c6',
 				},
 			},
 		},

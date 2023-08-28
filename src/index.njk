@@ -48,11 +48,11 @@
 						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<g fill="none" fill-rule="evenodd">
 								<path
-									class="fill-theme-black dark:fill-white"
+									class="fill-bg-black dark:fill-white"
 									d="M15 21h3v3H6v-3H3v-3H0V6h3V3h3V0h12v3h3v3h3v12h-3v3h-6zm3-3v3z"
 								/>
 								<path
-									class="fill-white dark:fill-theme-black"
+									class="fill-white dark:fill-bg-black"
 									d="M15 18v3h-3V3h3v3h3v3h3v6h-3v3h-3z"
 								/>
 							</g>
@@ -64,7 +64,7 @@
 				<div id="email-header">
 					<div class="absolute left-0 flex flex-row pl-4 h-full justify-between items-center">
 						{% for i in range(0, 3) -%}
-                            <div class="bg-gray-300 transition-[background-color] duration-200 ease-[ease] w-2.5 h-2.5 mr-1 xs:w-3 xs:h-3 xs:mr-2 rounded-full inline-block"
+                            <div class="bg-accent-gray transition-[background-color] duration-200 ease-[ease] w-2.5 h-2.5 mr-1 xs:w-3 xs:h-3 xs:mr-2 rounded-full inline-block"
                             ></div>
 						{%- endfor %}
 					</div>
@@ -72,7 +72,7 @@
 				</div>
 				<div id="email-compose">
 					<div class="flex flex-row relative items-center justify-center">
-						<label for="recipient" class="text-base text-gray-400 font-semibold pl-4">To:</label>
+						<label for="recipient" class="text-base text-gray font-semibold pl-4">To:</label>
 						<input
 							id="recipient"
 							tabindex="1"
@@ -85,7 +85,6 @@
 						<div class="mr-4">
 							<button
 								id="cc-button"
-								class="text-base font-semibold rounded px-2 text-center py-2 inline-block border border-gray-300 dark:border-black text-gray-400 w-12 no-underline transition-all duration-100 ease-[ease] border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white xs:w-[60px]"
 								tabindex="6"
 								>Cc:</button
 							>
@@ -93,7 +92,6 @@
 						<div class="mr-4">
 							<button
 								id="bcc-button"
-								class="text-base font-semibold rounded px-2 text-center py-2 inline-block border border-gray-300 dark:border-black text-gray-400 w-12 no-underline transition-all duration-100 ease-[ease] border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white xs:w-[60px]"
 								tabindex="7"
 								>Bcc:</button
 							>
@@ -101,7 +99,7 @@
 					</div>
 					<div id="cc-section" class="hidden">
 						<div class="flex flex-row relative items-center justify-center">
-							<label for="cc" class="text-base font-bold text-gray-400 pl-4">Cc:</label>
+							<label for="cc" class="text-base font-bold text-gray pl-4">Cc:</label>
 							<input
 								id="cc"
 								name="cc"
@@ -114,7 +112,7 @@
 					</div>
 					<div id="bcc-section" class="hidden">
 						<div class="flex flex-row relative items-center justify-center">
-							<label for="bcc" class="text-base font-bold text-gray-400 pl-4">Bcc:</label>
+							<label for="bcc" class="text-base font-bold text-gray pl-4">Bcc:</label>
 							<input
 								id="bcc"
 								name="bcc"
@@ -126,9 +124,9 @@
 						</div>
 					</div>
 					<div
-						class="border-theme-black border-2 flex flex-row relative items-center justify-center"
+						class="border-bg-black border-2 flex flex-row relative items-center justify-center"
 					>
-						<label for="subject" class="text-base font-bold text-gray-400 pl-4">Subject:</label>
+						<label for="subject" class="text-base font-bold text-gray pl-4">Subject:</label>
 						<input
 							id="subject"
 							tabindex="4"
@@ -139,15 +137,15 @@
 					</div>
 				</div>
 				<div
-					class="bg-white dark:bg-[#191919] transition-all duration-200 ease-[ease] h-full 3xl:min-h-[70vh] overflow-hidden w-full pt-4"
+					class="bg-white dark:bg-fg-black transition-all duration-200 ease-[ease] h-full 3xl:min-h-[70vh] overflow-hidden w-full pt-4"
 				>
-					<label for="body" class="text-base text-gray-400 font-semibold pl-4 block">Body:</label>
+					<label for="body" class="text-base text-gray font-semibold pl-4 block">Body:</label>
 					<textarea
 						aria-label="message"
 						tabindex="5"
 						id="body"
 						name="body"
-						class="h-[95%] p-4 w-full appearance-none bg-transparent border-none text-base leading-normal placeholder:text-[#777]"
+						class="h-[95%] p-4 w-full appearance-none bg-transparent border-none text-base leading-normal placeholder:text-[#777777]"
 						placeholder="A simple markup generator for mailto links that takes care of the formatting for you. Just fill out the email and copy your code."
 						id="body"
 					></textarea>
