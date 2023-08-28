@@ -40,6 +40,10 @@ textarea {
 	resize: none;
 }
 
+button {
+	cursor: pointer;
+}
+
 @keyframes slideIn {
 	0% {
 		transform: translateY(200px);
@@ -228,7 +232,6 @@ textarea {
 
 #cc-button,
 #bcc-button {
-	cursor: pointer;
 	background-color: transparent;
 	font-size: 1rem;
 	font-weight: 600;
