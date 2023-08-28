@@ -64,8 +64,9 @@
 				<div id="email-header">
 					<div class="absolute left-0 flex flex-row pl-4 h-full justify-between items-center">
 						{% for i in range(0, 3) -%}
-                            <div class="bg-accent-gray transition-[background-color] duration-200 ease-[ease] w-2.5 h-2.5 mr-1 xs:w-3 xs:h-3 xs:mr-2 rounded-full inline-block"
-                            ></div>
+						<div
+							class="bg-accent-gray transition-[background-color] duration-200 ease-[ease] w-2.5 h-2.5 mr-1 xs:w-3 xs:h-3 xs:mr-2 rounded-full inline-block"
+						></div>
 						{%- endfor %}
 					</div>
 					<h1 class="text-base m-0 font-semibold">{{ site.domain }}</h1>
@@ -83,18 +84,10 @@
 							multiple
 						/>
 						<div class="mr-4">
-							<button
-								id="cc-button"
-								tabindex="6"
-								>Cc:</button
-							>
+							<button id="cc-button" tabindex="6">Cc:</button>
 						</div>
 						<div class="mr-4">
-							<button
-								id="bcc-button"
-								tabindex="7"
-								>Bcc:</button
-							>
+							<button id="bcc-button" tabindex="7">Bcc:</button>
 						</div>
 					</div>
 					<div id="cc-section" class="hidden">
@@ -123,9 +116,7 @@
 							/>
 						</div>
 					</div>
-					<div
-						class="border-bg-black border-2 flex flex-row relative items-center justify-center"
-					>
+					<div class="border-bg-black border-2 flex flex-row relative items-center justify-center">
 						<label for="subject" class="text-base font-bold text-gray pl-4">Subject:</label>
 						<input
 							id="subject"
