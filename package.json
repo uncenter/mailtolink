@@ -33,7 +33,7 @@
 		"purgecss": "^5.0.0",
 		"sass": "^1.67.0",
 		"tailwindcss": "^3.3.3",
-		"uglify-js": "^3.17.4"
+		"terser": "^5.19.4"
 	},
 	"devDependencies": {
 		"prettier": "^3.0.3",

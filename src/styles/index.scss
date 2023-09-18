@@ -283,7 +283,7 @@ button {
 }
 
 body {
-	background-image: url('/assets/tile.svg');
+	background-image: url('/tile.svg');
 	background-repeat: repeat;
 	background-size: 60%;
 	background-position: -3px -45%;
@@ -312,7 +312,7 @@ body {
 		color: $white;
 	}
 	body {
-		background-image: url('/assets/tile-dark.svg');
+		background-image: url('/tile-dark.svg');
 		background-color: $bg-black;
 	}
 	#email-window,
