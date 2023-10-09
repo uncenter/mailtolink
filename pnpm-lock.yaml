@@ -24,14 +24,14 @@ dependencies:
     specifier: ^5.0.0
     version: 5.0.0
   sass:
-    specifier: ^1.68.0
-    version: 1.68.0
+    specifier: ^1.69.0
+    version: 1.69.0
   tailwindcss:
     specifier: ^3.3.3
     version: 3.3.3
   terser:
-    specifier: ^5.20.0
-    version: 5.20.0
+    specifier: ^5.21.0
+    version: 5.21.0
 
 devDependencies:
   prettier:
@@ -2156,8 +2156,8 @@ packages:
       queue-microtask: 1.2.3
     dev: false
 
-  /sass@1.68.0:
-    resolution: {integrity: sha512-Lmj9lM/fef0nQswm1J2HJcEsBUba4wgNx2fea6yJHODREoMFnwRpZydBnX/RjyXw2REIwdkbqE4hrTo4qfDBUA==}
+  /sass@1.69.0:
+    resolution: {integrity: sha512-l3bbFpfTOGgQZCLU/gvm1lbsQ5mC/WnLz3djL2v4WCJBDrWm58PO+jgngcGRNnKUh6wSsdm50YaovTqskZ0xDQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -2362,8 +2362,8 @@ packages:
       - ts-node
     dev: false
 
-  /terser@5.20.0:
-    resolution: {integrity: sha512-e56ETryaQDyebBwJIWYB2TT6f2EZ0fL0sW/JRXNMN26zZdKi2u/E/5my5lG6jNxym6qsrVXfFRmOdV42zlAgLQ==}
+  /terser@5.21.0:
+    resolution: {integrity: sha512-WtnFKrxu9kaoXuiZFSGrcAvvBqAdmKx0SFNmVNYdJamMu9yyN3I/QF0FbH4QcqJQ+y1CJnzxGIKH0cSj+FGYRw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
