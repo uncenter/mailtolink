@@ -2,9 +2,6 @@
 	"root": true,
 	"plugins": ["unicorn"],
 	"extends": ["eslint:recommended", "plugin:unicorn/recommended", "prettier"],
-	"parserOptions": {
-		"sourceType": "script"
-	},
 	"env": {
 		"browser": true,
 		"node": true
