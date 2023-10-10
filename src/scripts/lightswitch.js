@@ -1,5 +1,7 @@
 const systemTheme = () =>
-	window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	window.matchMedia('(prefers-color-scheme: dark)').matches
+		? 'dark'
+		: 'light';
 
 function setTheme(theme, permanent = false) {
 	document.documentElement.setAttribute('theme', theme);
@@ -20,9 +22,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	window
 		.matchMedia('(prefers-color-scheme: dark)')
-		.addEventListener('change', (e) => {
+		.addEventListener('change', (event) => {
 			if (!localStorage.getItem('theme')) {
-				setTheme(e.matches ? 'dark' : 'light');
+				setTheme(event.matches ? 'dark' : 'light');
 			}
 		});
 });

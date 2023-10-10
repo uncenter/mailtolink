@@ -6,11 +6,11 @@
 		<title>{{ site.title }}</title>
 
 		<script>
-			{{ inlined.js.lightswitch | safe }}
+			{{ inlined.js['lightswitch'] | safe }}
 		</script>
 
 		<style>
-			{{ inlined.css.fonts | safe }}
+			{{ inlined.css | safe }}
 		</style>
 		<link rel="stylesheet" href="/styles/index.css" />
 
@@ -151,7 +151,7 @@
 			</div>
 		</main>
 		<script>
-            {{ inlined.js.mailto | safe }}
+            {{ inlined.js['mailto'] | safe }}
         </script>
 	</body>
 </html>

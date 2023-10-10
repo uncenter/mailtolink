@@ -18,11 +18,7 @@ class Params {
 				parts.push(`${key}=${value}`);
 			}
 		}
-		if (parts.length > 0) {
-			return '?' + parts.join('&');
-		} else {
-			return '';
-		}
+		return parts.length > 0 ? '?' + parts.join('&') : '';
 	}
 }
 
@@ -34,7 +30,13 @@ const bccInput = document.querySelector('input#bcc');
 const subjectInput = document.querySelector('input#subject');
 const bodyInput = document.querySelector('textarea#body');
 
-const inputEls = [recipientInput, ccInput, bccInput, subjectInput, bodyInput];
+const inputElements = [
+	recipientInput,
+	ccInput,
+	bccInput,
+	subjectInput,
+	bodyInput,
+];
 
 const mailToText = document.querySelector('#mailto-text');
 const mailToContainer = document.querySelector('#mailto-link-container');
@@ -52,7 +54,7 @@ function updateResult() {
 
 		// Replace spaces and line breaks in subject/body inputs according to RFC6068: https://datatracker.ietf.org/doc/html/rfc6068#section-5.
 		if (['subject', 'body'].includes(name)) {
-			value = encodeURIComponent(value).replace(/%0A/g, '%0D%0A');
+			value = encodeURIComponent(value).replaceAll('%0A', '%0D%0A');
 		}
 
 		if (value !== '') params.set(name, value);
@@ -64,7 +66,7 @@ function updateResult() {
 }
 
 function updateMailToContainer() {
-	if (inputEls.every((e) => e.value === '')) {
+	if (inputElements.every((element) => element.value === '')) {
 		mailToContainer.classList.remove('active');
 		return;
 	}
@@ -75,19 +77,19 @@ function updateMailToContainer() {
 
 updateMailToContainer();
 
-for (const input of inputEls) {
-	input.addEventListener('input', (e) => {
+for (const element of inputElements) {
+	element.addEventListener('input', () => {
 		updateMailToContainer();
 	});
 }
 
-const ccBtn = document.querySelector('#cc-button');
-const bccBtn = document.querySelector('#bcc-button');
+const ccButton = document.querySelector('#cc-button');
+const bccButton = document.querySelector('#bcc-button');
 
 const ccSection = document.querySelector('#cc-section');
 const bccSection = document.querySelector('#bcc-section');
 
-ccBtn.addEventListener('click', function (e) {
+ccButton.addEventListener('click', function () {
 	if (ccSection.classList.contains('hidden')) {
 		ccSection.classList.remove('hidden');
 		document.querySelector('#cc').focus();
@@ -96,7 +98,7 @@ ccBtn.addEventListener('click', function (e) {
 	}
 });
 
-bccBtn.addEventListener('click', function (e) {
+bccButton.addEventListener('click', function () {
 	if (bccSection.classList.contains('hidden')) {
 		bccSection.classList.remove('hidden');
 		document.querySelector('#bcc').focus();
@@ -109,7 +111,7 @@ bccBtn.addEventListener('click', function (e) {
 
 const copyCode = document.querySelector('#copy-code');
 
-copyCode.addEventListener('click', function (e) {
+copyCode.addEventListener('click', function () {
 	window.navigator.clipboard.writeText(
 		copyCode.previousElementSibling.textContent,
 	);
@@ -121,8 +123,8 @@ copyCode.addEventListener('click', function (e) {
 	}, 1500);
 });
 
-copyCode.addEventListener('mouseover', function (e) {
-	if ((copyCode.textContent = 'Copied!')) {
+copyCode.addEventListener('mouseover', function () {
+	if (copyCode.textContent === 'Copied!') {
 		copyCode.textContent = 'Copy';
 	}
 });
