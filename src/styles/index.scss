@@ -248,6 +248,13 @@ button {
 		width: 60px;
 	}
 
+  &:focus-visible,
+  &:focus-within,
+  &:focus {
+    outline: 2px solid $accent-green;
+    border: none;
+  }
+
 	@apply border border-accent-gray dark:border-black text-gray border-solid hover:bg-[#1e1e1e] dark:hover:bg-white hover:text-white dark:hover:text-[#1e1e1e] hover:border-[#1e1e1e] dark:hover:border-white;
 }
 
