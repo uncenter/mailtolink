@@ -13,7 +13,7 @@
 			"url": "https://mckvr.com"
 		}
 	],
-	"repository": "uncenter/mailtolink.git",
+	"repository": "uncenter/mailtolink",
 	"license": "MIT",
 	"type": "commonjs",
 	"scripts": {
