@@ -26,13 +26,13 @@
 	"dependencies": {
 		"@11ty/eleventy": "^2.0.1",
 		"@fullhuman/postcss-purgecss": "^5.0.0",
-		"autoprefixer": "^10.4.17",
-		"cssnano": "^6.0.3",
-		"postcss": "^8.4.33",
+		"autoprefixer": "^10.4.18",
+		"cssnano": "^6.0.5",
+		"postcss": "^8.4.35",
 		"purgecss": "^5.0.0",
-		"sass": "^1.70.0",
+		"sass": "^1.71.1",
 		"tailwindcss": "^3.4.1",
-		"terser": "^5.27.0"
+		"terser": "^5.28.1"
 	},
 	"devDependencies": {
 		"eslint": "^8.57.0",
